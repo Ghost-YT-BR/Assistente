@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+Resumo do Atendimento
+{% endblock %}
+ 
+{% block content %}
+<div class="card shadow border-0 mb-4">
+    <div class="card-header bg-warning text-dark">
+        <h3 class="mb-0">Resumo da Ocorrência</h3>
+    </div>
+    
+    <div class="card-body">
+        <p class="text-muted">Etapa 4 de 4 - Verifique as informações antes de registrar o atendimento.</p>
+        
+        <!-- Dados Iniciais -->
+        <h5 class="text-danger border-bottom pb-2 mt-4">Dados Iniciais</h5>
+        <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item"><strong>Solicitante:</strong> {{ dados_iniciais.nome }}</li>
+            <li class="list-group-item"><strong>Telefone:</strong> {{ dados_iniciais.telefone }}</li>
+            <li class="list-group-item"><strong>Estado:</strong> {{ dados_iniciais.estado }}</li>
+            <li class="list-group-item"><strong>Endereço:</strong> {{ dados_iniciais.endereco }}</li>
+            <li class="list-group-item"><strong>Referência:</strong> {{ dados_iniciais.referencia }}</li>
+        </ul>
+ 
+        <!-- Questionário -->
+        <h5 class="text-danger border-bottom pb-2">Questionário: {{ tipo_ocorrencia }}</h5>
+        <ul class="list-group list-group-flush mb-4">
+            {% for pergunta, resposta in respostas.items %}
+            <li class="list-group-item">
+                <strong>{{ pergunta }}</strong><br>
+                <span class="text-primary">{{ resposta }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+ 
+        <form method="POST">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between mt-5">
+                <a href="javascript:history.back()" class="btn btn-outline-secondary btn-lg">← Voltar e Corrigir</a>
+                <button type="submit" class="btn btn-success btn-lg">Confirmar e Ver Procedimentos →</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+ 

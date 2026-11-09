@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+Origem Assist
+{% endblock %}
+ 
+{% block content %}
+ 
+<div class="text-center">
+ 
+    <h1 class="display-4">
+        Origem Assist
+    </h1>
+ 
+    <p class="lead">
+        Sistema Inteligente de Apoio Operacional
+    </p>
+ 
+    <hr>
+ 
+    <div class="d-grid gap-4 col-6 mx-auto">
+ 
+        <a href="/emergencial/" class="btn btn-danger btn-lg">
+            🚨 Atendimento Emergencial
+        </a>
+ 
+        <a href="/nao-emergencial/" class="btn btn-primary btn-lg">
+            📋 Atendimento Não Emergencial
+        </a>
+ 
+    </div>
+ 
+    <div class="mt-5 alert alert-info">
+ 
+        🤖 <strong>Joy IA</strong><br>
+ 
+        Em breve auxiliará durante os atendimentos.
+ 
+    </div>
+ 
+</div>
+ 
+{% endblock %}

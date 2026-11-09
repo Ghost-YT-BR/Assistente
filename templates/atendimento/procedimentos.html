@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+ 
+{% block title %}Procedimentos Operacionais{% endblock %}
+ 
+{% block content %}
+<div class="card shadow border-0 mb-4">
+    <div class="card-header bg-danger text-white">
+        <h3 class="mb-0">🚨 Ações Imediatas - Atendimento Registado</h3>
+    </div>
+    
+    <div class="card-body">
+        <div class="alert alert-success">
+            <strong>Ocorrência #{{ ocorrencia.id }} guardada com sucesso!</strong><br>
+            Solicitante: {{ ocorrencia.nome_solicitante }} | Tipo: {{ ocorrencia.tipo_ocorrencia }}
+        </div>
+ 
+        <h5 class="text-danger mt-4 border-bottom pb-2">1. Abertura do Chamado (Cervello ITSM)</h5>
+        <ul>
+            <li><strong>Fila:</strong> ORI_SUPORTE-NÍVEL 1</li>
+            <li><strong>Solicitante:</strong> Origem Energia</li>
+            <li><strong>Categoria:</strong> Orig.-Emergencial</li>
+            <li><em>Instrução:</em> Preencha todos os campos com os dados coletados e atualize com as ações realizadas.</li>
+        </ul>
+ 
+        <h5 class="text-danger mt-4 border-bottom pb-2">2. Comunicação e E-mail</h5>
+        <ul>
+            <li><strong>Para:</strong> sms-origem@origemenergia.com</li>
+            <li><strong>Cópia (CC):</strong> camila.godoi@ik.com.br</li>
+            <li><strong>Assunto:</strong> Chamado emergencial (Especificar se é simulado ou não)</li>
+            <li><em>Instrução:</em> Envie o resumo completo da solicitação.</li>
+        </ul>
+ 
+        <h5 class="text-danger mt-4 border-bottom pb-2">3. Acionamento de Plantonistas (Tolerância: 5 min no Primário)</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Localidade</th>
+                        <th>Contato Primário</th>
+                        <th>Contato Secundário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alagoas (Pilar)</td>
+                        <td>(82) 3142-8999 - Ramal 4444</td>
+                        <td>(82) 98133-6440</td>
+                    </tr>
+                    <tr>
+                        <td>Terminal de Maceió</td>
+                        <td>(82) 3142-8999 - Ramal 4444</td>
+                        <td>(82) 98133-6440</td>
+                    </tr>
+                    <tr>
+                        <td>Bahia (Tucano Sul)</td>
+                        <td>(75) 3199-1911 - Ramal 5000/5006</td>
+                        <td>(75) 99924-8502 (WhatsApp se falhar)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="alert alert-warning mt-3">
+            <strong>Regras de Acompanhamento:</strong><br>
+            - Se o plantonista não retornar em 30 min, altere o status para "Aguardando Cliente".<br>
+            - Faça uma nova cobrança a cada 2 horas e registe no chamado.<br>
+            - <strong>O encerramento só deve ser feito com a AUTORIZAÇÃO do Plantonista.</strong>
+        </div>
+ 
+        <div class="d-flex justify-content-end mt-4">
+            <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Finalizar e Voltar ao Início</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

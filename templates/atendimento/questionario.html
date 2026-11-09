@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+ 
+{% block title %}
+Questionário - {{ tipo }}
+{% endblock %}
+ 
+{% block content %}
+<div class="card shadow border-0">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">Questionário da Ocorrência</h3>
+    </div>
+    
+    <div class="card-body">
+        <h4 class="text-danger mb-4">{{ tipo|title }}</h4>
+        <hr>
+ 
+        <form method="POST">
+            {% csrf_token %}
+            
+            {% for pergunta in perguntas %}
+            <div class="mb-4">
+                <label for="pergunta_{{ forloop.counter }}" class="form-label fw-bold">
+                    {{ forloop.counter }}. {{ pergunta }}
+                </label>
+                <input type="text" class="form-control form-control-lg" id="pergunta_{{ forloop.counter }}" name="pergunta_{{ forloop.counter }}" required>
+            </div>
+            {% endfor %}
+ 
+            <div class="d-flex justify-content-between mt-5">
+                <a href="{% url 'tipo_ocorrencia' %}" class="btn btn-outline-secondary btn-lg">← Voltar</a>
+                <button type="submit" class="btn btn-primary btn-lg">Próxima Etapa →</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+ 

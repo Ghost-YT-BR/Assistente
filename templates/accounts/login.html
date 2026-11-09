@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+ 
+{% block title %}Login - Origem Assist{% endblock %}
+ 
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-dark text-white text-center py-3">
+                <h3 class="mb-0">🚨 Origem Assist</h3>
+            </div>
+            <div class="card-body p-4">
+                <p class="text-center text-muted mb-4">Insere as tuas credenciais para aceder ao sistema operacional.</p>
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        Nome de utilizador ou palavra-passe incorretos.
+                    </div>
+                    {% endif %}
+ 
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Utilizador</label>
+                        <input type="text" name="username" class="form-control form-control-lg" required>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Palavra-passe</label>
+                        <input type="password" name="password" class="form-control form-control-lg" required>
+                    </div>
+ 
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Entrar no Sistema</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
